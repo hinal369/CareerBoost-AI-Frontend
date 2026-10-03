@@ -4,9 +4,9 @@ const api = axios.create({
   baseURL: "http://localhost:3000",
   withCredentials: true
 })
-export const register = (username, email, password) => {
+export const register = async (username, email, password) => {
   try {
-    const response = api.post('/api/auth/register', {
+    const response = await api.post('/api/auth/register', {
       username, email, password
     });
 
@@ -16,9 +16,10 @@ export const register = (username, email, password) => {
   }
 } 
 
-export const login = (email, password) => {
+export const login = async (email, password) => {
   try {
-    const response = axios.post('/api/auth/login', {
+    
+    const response = await api.post('/api/auth/login', {
       email, password
     });
 
@@ -28,20 +29,18 @@ export const login = (email, password) => {
   }
 } 
 
-export const logout = () => {
+export const logout = async () => {
   try {
-    const response = axios.get('/api/auth/logout');
-
+    const response = await api.get('/api/auth/logout');
     return response.data;
   } catch (error) {
     console.log(error);
   }
 } 
 
-export const getMe = () => {
+export const getMe = async () => {
   try {
-    const response = axios.get('/api/auth/get-me');
-
+    const response = await api.get('/api/auth/get-me');
     return response.data;
   } catch (error) {
     console.log(error);

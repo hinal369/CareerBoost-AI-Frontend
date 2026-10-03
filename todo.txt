@@ -1,0 +1,1 @@
+1. When user is login, the user will not able to access login & register page
